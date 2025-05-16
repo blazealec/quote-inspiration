@@ -140,11 +140,21 @@ function App() {
     return backgroundImages[randomIndex];
   };
 
-  const fetchQuote = async () => {
+  const fetchQuote = async (retryCount = 0) => {
     setLoading(true);
     setError('');
     try {
-      const response = await axios.get('/api/quote');
+      const response = await axios.get('/api/quote', {
+        timeout: 10000,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (!response.data || !response.data.content || !response.data.author) {
+        throw new Error('Invalid response format');
+      }
+
       setQuote({
         text: response.data.content,
         author: response.data.author
@@ -152,13 +162,25 @@ function App() {
       // Change background when getting new quote
       setBackgroundImage(getRandomBackground());
     } catch (error) {
+      console.error('Error fetching quote:', error);
+      
+      // Retry logic for network errors
+      if (retryCount < 2 && axios.isAxiosError(error) && !error.response) {
+        console.log(`Retrying... (${retryCount + 1}/2)`);
+        return fetchQuote(retryCount + 1);
+      }
+
       let errorMessage = 'Failed to fetch quote. Please try again.';
-      if (axios.isAxiosError(error) && error.response?.data?.details) {
-        errorMessage = `Error: ${error.response.data.details}`;
-        console.error('Detailed error:', error.response.data);
+      if (axios.isAxiosError(error)) {
+        if (error.response?.data?.details) {
+          errorMessage = `Error: ${error.response.data.details}`;
+        } else if (error.code === 'ECONNABORTED') {
+          errorMessage = 'Request timed out. Please try again.';
+        } else if (!error.response) {
+          errorMessage = 'Network error. Please check your connection.';
+        }
       }
       setError(errorMessage);
-      console.error('Error fetching quote:', error);
     }
     setLoading(false);
   };
@@ -196,7 +218,7 @@ function App() {
             <Quote>"{quote.text}"</Quote>
             <Author>- {quote.author}</Author>
             <ButtonContainer>
-              <Button onClick={fetchQuote} disabled={loading || sharing}>
+              <Button onClick={() => fetchQuote()} disabled={loading || sharing}>
                 {loading ? 'Loading...' : 'New Quote'}
               </Button>
               <Button onClick={handleShare} disabled={loading || sharing}>
