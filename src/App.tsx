@@ -186,7 +186,20 @@ function App() {
   };
 
   useEffect(() => {
-    void fetchQuote();
+    // Initialize the SDK and hide splash screen
+    const initApp = async () => {
+      try {
+        // Hide the splash screen
+        await sdk.actions.ready();
+        // Fetch the first quote
+        await fetchQuote();
+      } catch (error) {
+        console.error('Error initializing app:', error);
+        setError('Failed to initialize app. Please try again.');
+      }
+    };
+    
+    void initApp();
   }, []);
 
   const handleShare = async () => {
