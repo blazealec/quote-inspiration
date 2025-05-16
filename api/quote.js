@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const QUOTABLE_API = 'https://api.quotable.io/random';
+const ZEN_QUOTES_API = 'https://zenquotes.io/api/random';
 
 module.exports = async (req, res) => {
   // Set CORS headers
@@ -14,9 +14,9 @@ module.exports = async (req, res) => {
   }
 
   try {
-    console.log('Fetching quote from:', QUOTABLE_API);
+    console.log('Fetching quote from:', ZEN_QUOTES_API);
     
-    const response = await axios.get(QUOTABLE_API, {
+    const response = await axios.get(ZEN_QUOTES_API, {
       timeout: 5000,
       headers: {
         'Accept': 'application/json',
@@ -26,13 +26,16 @@ module.exports = async (req, res) => {
 
     console.log('Quote API response:', response.data);
 
-    if (!response.data || !response.data.content || !response.data.author) {
-      throw new Error('Invalid response format from Quotable API');
+    // ZenQuotes returns an array with a single quote object
+    const quote = response.data[0];
+
+    if (!quote || !quote.q || !quote.a) {
+      throw new Error('Invalid response format from ZenQuotes API');
     }
 
     return res.status(200).json({
-      content: response.data.content,
-      author: response.data.author
+      content: quote.q,
+      author: quote.a
     });
   } catch (error) {
     console.error('Detailed error:', {
