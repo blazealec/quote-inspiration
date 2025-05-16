@@ -152,7 +152,12 @@ function App() {
       // Change background when getting new quote
       setBackgroundImage(getRandomBackground());
     } catch (error) {
-      setError('Failed to fetch quote. Please try again.');
+      let errorMessage = 'Failed to fetch quote. Please try again.';
+      if (axios.isAxiosError(error) && error.response?.data?.details) {
+        errorMessage = `Error: ${error.response.data.details}`;
+        console.error('Detailed error:', error.response.data);
+      }
+      setError(errorMessage);
       console.error('Error fetching quote:', error);
     }
     setLoading(false);
