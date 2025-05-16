@@ -140,7 +140,7 @@ function App() {
     return backgroundImages[randomIndex];
   };
 
-  const fetchQuote = async (retryCount = 0) => {
+  const fetchQuote = async () => {
     setLoading(true);
     setError('');
     try {
@@ -165,9 +165,9 @@ function App() {
       console.error('Error fetching quote:', error);
       
       // Retry logic for network errors
-      if (retryCount < 2 && axios.isAxiosError(error) && !error.response) {
-        console.log(`Retrying... (${retryCount + 1}/2)`);
-        return fetchQuote(retryCount + 1);
+      if (axios.isAxiosError(error) && !error.response) {
+        console.log('Retrying...');
+        return fetchQuote();
       }
 
       let errorMessage = 'Failed to fetch quote. Please try again.';
@@ -186,7 +186,7 @@ function App() {
   };
 
   useEffect(() => {
-    fetchQuote();
+    void fetchQuote();
   }, []);
 
   const handleShare = async () => {
@@ -211,14 +211,14 @@ function App() {
         ) : error ? (
           <>
             <ErrorMessage>{error}</ErrorMessage>
-            <Button onClick={fetchQuote}>Try Again</Button>
+            <Button onClick={() => void fetchQuote()}>Try Again</Button>
           </>
         ) : (
           <>
             <Quote>"{quote.text}"</Quote>
             <Author>- {quote.author}</Author>
             <ButtonContainer>
-              <Button onClick={() => fetchQuote()} disabled={loading || sharing}>
+              <Button onClick={() => void fetchQuote()} disabled={loading || sharing}>
                 {loading ? 'Loading...' : 'New Quote'}
               </Button>
               <Button onClick={handleShare} disabled={loading || sharing}>
