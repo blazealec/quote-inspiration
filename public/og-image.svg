@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="800" fill="#1a1a1a"/>
-  <text x="600" y="350" font-family="Arial" font-size="72" fill="white" text-anchor="middle">Quote Inspiration</text>
-  <text x="600" y="450" font-family="Arial" font-size="36" fill="#888888" text-anchor="middle">Get your daily dose of inspiration</text>
-  <path d="M500 550 L700 550" stroke="white" stroke-width="4"/>
+<svg width="1200" height="628" viewBox="0 0 1200 628" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="628" fill="#1a1a1a"/>
+  <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:0.8" />
+    <stop offset="100%" style="stop-color:#FFE66D;stop-opacity:0.8" />
+  </linearGradient>
+  <rect width="1200" height="628" fill="url(#grad)" opacity="0.1"/>
+  <text x="600" y="250" fill="white" font-family="Arial" font-size="48" text-anchor="middle" font-weight="bold">Quote Inspiration</text>
+  <text x="600" y="350" fill="#b3b3b3" font-family="Arial" font-size="24" text-anchor="middle">Daily inspiration from great minds</text>
+  <path d="M500 400 L560 400 Q600 400 600 440 L600 520 Q600 560 640 560 L700 560" stroke="#FF6B6B" stroke-width="16" stroke-linecap="round"/>
+  <path d="M700 400 L640 400 Q600 400 600 440 L600 520 Q600 560 560 560 L500 560" stroke="#FFE66D" stroke-width="16" stroke-linecap="round"/>
 </svg> 
