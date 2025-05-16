@@ -23,9 +23,6 @@ importers:
       '@tanstack/react-query':
         specifier: 5.45.1
         version: 5.45.1(react@18.3.1)
-      '@vercel/node':
-        specifier: ^5.1.16
-        version: 5.1.16(rollup@4.40.2)
       axios:
         specifier: ^1.9.0
         version: 1.9.0
@@ -51,6 +48,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.3.0
         version: 18.3.7(@types/react@18.3.21)
+      '@vercel/node':
+        specifier: ^5.1.16
+        version: 5.1.16(rollup@4.40.2)
       '@vitejs/plugin-react':
         specifier: ^4.2.1
         version: 4.4.1(vite@5.4.19(@types/node@16.18.11))
