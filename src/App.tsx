@@ -144,7 +144,7 @@ function App() {
     setLoading(true);
     setError('');
     try {
-      const response = await axios.get('/api/quotable/random');
+      const response = await axios.get('https://api.quotable.io/random');
       setQuote({
         text: response.data.content,
         author: response.data.author
