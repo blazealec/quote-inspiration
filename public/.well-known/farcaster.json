@@ -12,9 +12,9 @@
   "frame": {
     "version": "1",
     "name": "Quote Inspiration",
+    "iconUrl": "https://quote-inspiration.vercel.app/app.png",
     "homeUrl": "https://quote-inspiration.vercel.app",
-    "iconUrl": "https://quote-inspiration.vercel.app/splash.svg",
-    "splashImageUrl": "https://quote-inspiration.vercel.app/splash.svg",
+    "splashImageUrl": "https://quote-inspiration.vercel.app/app.png",
     "splashBackgroundColor": "#1a1a1a",
     "subtitle": "Daily inspirational quotes",
     "description": "A beautiful quote generator with aesthetic backgrounds. Share your favorite quotes directly to Farcaster!",

@@ -1,20 +1,10 @@
 {
-  "mini_apps": {
-    "quote-inspiration": {
-      "name": "Quote Inspiration",
-      "description": "A beautiful quote generator with aesthetic backgrounds. Get inspired and share quotes to Farcaster!",
-      "icon_url": "https://quote-inspiration.vercel.app/splash.svg",
-      "url": "https://quote-inspiration.vercel.app",
-      "developer_fid": 266458,
-      "developer_name": "blazee"
-    }
-  },
   "frame": {
     "version": "1",
     "name": "Quote Inspiration",
+    "iconUrl": "https://quote-inspiration.vercel.app/app.png",
     "homeUrl": "https://quote-inspiration.vercel.app",
-    "iconUrl": "https://quote-inspiration.vercel.app/splash.svg",
-    "splashImageUrl": "https://quote-inspiration.vercel.app/splash.svg",
+    "splashImageUrl": "https://quote-inspiration.vercel.app/app.png",
     "splashBackgroundColor": "#1a1a1a",
     "subtitle": "Daily inspirational quotes",
     "description": "A beautiful quote generator with aesthetic backgrounds. Share your favorite quotes directly to Farcaster!",
