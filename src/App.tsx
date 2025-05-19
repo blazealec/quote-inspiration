@@ -262,10 +262,10 @@ function App() {
 
   const handleAddApp = async () => {
     try {
-      await sdk.actions.addFrame();
+      await sdk.actions.addMiniApp();
       setShowAddPrompt(false);
     } catch (error) {
-      console.error('Error adding frame:', error);
+      console.error('Error adding mini app:', error);
     }
   };
 
@@ -338,9 +338,6 @@ function App() {
               </Button>
               <Button onClick={handleShare} disabled={loading || sharing}>
                 {sharing ? 'Sharing...' : 'Share to Farcaster'}
-              </Button>
-              <Button onClick={handleAddApp} disabled={loading || sharing}>
-                Add to Warpcast
               </Button>
             </ButtonContainer>
           </>

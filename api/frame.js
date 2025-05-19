@@ -49,7 +49,7 @@ module.exports = async (req, res) => {
           }
         });
       } else if (buttonIndex === 2) {
-        // Add App button - redirect to Warpcast app page
+        // Add App button - redirect to Warpcast app page with proper action
         return res.status(200).json({
           frames: {
             version: 'vNext',
@@ -61,7 +61,7 @@ module.exports = async (req, res) => {
             ],
             ogImage: imageUrl,
             action: {
-              type: 'warpcast_tab',
+              type: 'warpcast_mini_app',
               url: 'https://warpcast.com/~/mini-apps?app=quote-inspiration'
             }
           }
