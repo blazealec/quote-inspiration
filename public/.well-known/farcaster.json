@@ -16,7 +16,7 @@
     "iconUrl": "https://quote-inspiration.vercel.app/splash.svg",
     "splashImageUrl": "https://quote-inspiration.vercel.app/splash.svg",
     "splashBackgroundColor": "#1a1a1a",
-    "subtitle": "Get inspired daily with beautiful quotes",
+    "subtitle": "Daily inspirational quotes",
     "description": "A beautiful quote generator with aesthetic backgrounds. Share your favorite quotes directly to Farcaster!",
     "primaryCategory": "art-creativity",
     "tags": [
@@ -26,7 +26,7 @@
       "creative"
     ],
     "heroImageUrl": "https://quote-inspiration.vercel.app/og-image.svg",
-    "tagline": "Beautiful quotes for your daily inspiration",
+    "tagline": "Beautiful quotes daily",
     "ogTitle": "Quote Inspiration",
     "ogDescription": "Get your daily dose of inspiration with beautiful quotes",
     "ogImageUrl": "https://quote-inspiration.vercel.app/og-image.svg"
