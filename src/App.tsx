@@ -303,7 +303,7 @@ function App() {
       
       // Share the quote with the image
       await sdk.actions.composeCast({
-        text: `"${quote.text}"\n\n- ${quote.author}\n\n✨ Generated with Quote Inspiration by @blazee`,
+        text: `"${quote.text}"\n\n- ${quote.author}\n\n✨ Generated with Quote Inspiration by blazee`,
         embeds: [imageUrl]
       });
     } catch (error) {
@@ -318,7 +318,7 @@ function App() {
     <Container backgroundImage={backgroundImage}>
       <Header>
         <Title>Quote Inspiration</Title>
-        <Attribution>by @blazee</Attribution>
+        <Attribution>by blazee</Attribution>
       </Header>
       <QuoteCard>
         {loading ? (

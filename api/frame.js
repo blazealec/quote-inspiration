@@ -80,7 +80,7 @@ module.exports = async (req, res) => {
             ogImage: imageUrl,
             action: {
               type: 'post',
-              text: `"${text}"\n\n- ${author}\n\n✨ Generated with Quote Inspiration by @blazee\n\nhttps://quote-inspiration.vercel.app`
+              text: `"${text}"\n\n- ${author}\n\n✨ Generated with Quote Inspiration by blazee\n\nhttps://quote-inspiration.vercel.app`
             }
           }
         });

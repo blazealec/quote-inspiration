@@ -5,7 +5,8 @@
       "description": "A beautiful quote generator with aesthetic backgrounds. Get inspired and share quotes to Farcaster!",
       "icon_url": "https://quote-inspiration.vercel.app/splash.svg",
       "url": "https://quote-inspiration.vercel.app",
-      "developer": "blazee"
+      "developer_fid": 266458,
+      "developer_name": "blazee"
     }
   }
 }

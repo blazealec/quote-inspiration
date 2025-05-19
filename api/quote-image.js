@@ -139,7 +139,7 @@ async function generateQuoteImage(text, author) {
                       fontSize: '14px',
                       opacity: 0.9,
                     },
-                    children: 'by @blazee',
+                    children: 'by blazee',
                   },
                 },
               ],
