@@ -8,7 +8,24 @@
     <meta property="og:title" content="Quote Inspiration" />
     <meta property="og:description" content="Get your daily dose of inspiration with beautiful quotes." />
     <meta property="og:image" content="https://quote-inspiration.vercel.app/og-image.svg" />
-    <meta name="fc:frame" content='{"version":"next","imageUrl":"https://quote-inspiration.vercel.app/og-image.svg","button":{"title":"Get Inspired","action":{"type":"launch_frame","name":"Quote Inspiration","url":"https://quote-inspiration.vercel.app","splashImageUrl":"https://quote-inspiration.vercel.app/splash.svg","splashBackgroundColor":"#1a1a1a"}}}' />
+    
+    <!-- Farcaster Frame Metadata -->
+    <meta name="fc:frame" content='{"version":"vNext","imageUrl":"https://quote-inspiration.vercel.app/api/frame","buttons":[{"label":"🔄 New Quote","action":"post"},{"label":"➕ Add App","action":"post"},{"label":"📢 Share","action":"post"}],"postUrl":"https://quote-inspiration.vercel.app/api/frame"}' />
+    <meta name="fc:frame:image" content="https://quote-inspiration.vercel.app/api/frame" />
+    <meta name="fc:frame:post_url" content="https://quote-inspiration.vercel.app/api/frame" />
+    <meta name="fc:frame:button:1" content="🔄 New Quote" />
+    <meta name="fc:frame:button:2" content="➕ Add App" />
+    <meta name="fc:frame:button:3" content="📢 Share" />
+    
+    <!-- For older Frames version support -->
+    <meta name="fc:frame:image:aspect_ratio" content="1.91:1" />
+    
+    <!-- Embedded mini app metadata -->
+    <meta name="fc:frame:app:launch_url" content="https://quote-inspiration.vercel.app" />
+    <meta name="fc:frame:app:name" content="Quote Inspiration" />
+    <meta name="fc:frame:app:splash_image_url" content="https://quote-inspiration.vercel.app/splash.svg" />
+    <meta name="fc:frame:app:splash_background_color" content="#1a1a1a" />
+    
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>

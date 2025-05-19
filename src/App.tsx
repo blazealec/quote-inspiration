@@ -20,6 +20,31 @@ interface ContainerProps {
   backgroundImage: string;
 }
 
+const Header = styled.header`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  z-index: 10;
+`;
+
+const Title = styled.h1`
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+`;
+
+const Attribution = styled.span`
+  font-size: 14px;
+  opacity: 0.9;
+`;
+
 const Container = styled.div<ContainerProps>`
   display: flex;
   flex-direction: column;
@@ -104,6 +129,55 @@ const ButtonContainer = styled.div`
   flex-wrap: wrap;
 `;
 
+const AddAppPrompt = styled.div`
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 12px 20px;
+  border-radius: 10px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  max-width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.5s ease-out;
+
+  @keyframes slideUp {
+    from {
+      transform: translate(-50%, 100px);
+      opacity: 0;
+    }
+    to {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+  }
+`;
+
+const PromptText = styled.span`
+  font-size: 14px;
+  margin-right: 15px;
+`;
+
+const CloseButton = styled.button`
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 0 5px;
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  
+  &:hover {
+    color: white;
+  }
+`;
+
 const LoadingSpinner = styled.div`
   width: 40px;
   height: 40px;
@@ -134,6 +208,7 @@ function App() {
   const [error, setError] = useState('');
   const [sharing, setSharing] = useState(false);
   const [backgroundImage, setBackgroundImage] = useState(backgroundImages[0]);
+  const [showAddPrompt, setShowAddPrompt] = useState(false);
 
   const getRandomBackground = () => {
     const randomIndex = Math.floor(Math.random() * backgroundImages.length);
@@ -185,6 +260,15 @@ function App() {
     setLoading(false);
   };
 
+  const handleAddApp = async () => {
+    try {
+      await sdk.actions.addFrame();
+      setShowAddPrompt(false);
+    } catch (error) {
+      console.error('Error adding frame:', error);
+    }
+  };
+
   useEffect(() => {
     // Initialize the SDK and hide splash screen
     const initApp = async () => {
@@ -193,6 +277,11 @@ function App() {
         await sdk.actions.ready();
         // Fetch the first quote
         await fetchQuote();
+        
+        // Show the add app prompt after a short delay
+        setTimeout(() => {
+          setShowAddPrompt(true);
+        }, 2000);
       } catch (error) {
         console.error('Error initializing app:', error);
         setError('Failed to initialize app. Please try again.');
@@ -205,8 +294,17 @@ function App() {
   const handleShare = async () => {
     try {
       setSharing(true);
+      
+      // Get the base URL (similar to what we use in the API)
+      const baseUrl = window.location.origin;
+      
+      // Create the quote image URL (this matches our API endpoint)
+      const imageUrl = `${baseUrl}/api/quote-image?text=${encodeURIComponent(quote.text)}&author=${encodeURIComponent(quote.author)}`;
+      
+      // Share the quote with the image
       await sdk.actions.composeCast({
-        text: `"${quote.text}"\n\n- ${quote.author}\n\n✨ Generated with Quote Inspiration`,
+        text: `"${quote.text}"\n\n- ${quote.author}\n\n✨ Generated with Quote Inspiration by @blazee`,
+        embeds: [imageUrl]
       });
     } catch (error) {
       setError('Failed to share to Farcaster. Please try again.');
@@ -218,6 +316,10 @@ function App() {
 
   return (
     <Container backgroundImage={backgroundImage}>
+      <Header>
+        <Title>Quote Inspiration</Title>
+        <Attribution>by @blazee</Attribution>
+      </Header>
       <QuoteCard>
         {loading ? (
           <LoadingSpinner />
@@ -237,10 +339,21 @@ function App() {
               <Button onClick={handleShare} disabled={loading || sharing}>
                 {sharing ? 'Sharing...' : 'Share to Farcaster'}
               </Button>
+              <Button onClick={handleAddApp} disabled={loading || sharing}>
+                Add to Warpcast
+              </Button>
             </ButtonContainer>
           </>
         )}
       </QuoteCard>
+      
+      {showAddPrompt && (
+        <AddAppPrompt>
+          <PromptText>📌 Add Quote Inspiration to your favorites for quick access!</PromptText>
+          <Button onClick={handleAddApp}>Add App</Button>
+          <CloseButton onClick={() => setShowAddPrompt(false)}>&times;</CloseButton>
+        </AddAppPrompt>
+      )}
     </Container>
   );
 }

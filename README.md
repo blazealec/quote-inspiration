@@ -9,7 +9,9 @@ A beautiful quote generator mini app for Farcaster that displays inspirational q
 - 🌟 Modern, glassmorphic UI design
 - 📱 Fully responsive layout
 - 🔄 Smooth transitions and animations
-- 📢 Direct sharing to Farcaster
+- 📢 Direct sharing to Farcaster with quote images
+- 🧩 Fully interactive Farcaster Frame support
+- 📌 One-click add to Warpcast
 
 ## Tech Stack
 
@@ -18,6 +20,7 @@ A beautiful quote generator mini app for Farcaster that displays inspirational q
 - Emotion (Styled Components)
 - Farcaster Frame SDK
 - Axios
+- Satori + resvg-js for image generation
 
 ## Getting Started
 
@@ -39,6 +42,22 @@ pnpm dev
 
 4. Open [http://localhost:5173](http://localhost:5173) in your browser
 
+## Farcaster Frame Support
+
+This app implements the Farcaster Frame protocol, allowing users to:
+
+- View beautiful quotes with images when shared on Farcaster
+- Get new quotes by clicking the refresh button
+- Add the app to Warpcast with a single click
+- Share quotes to their feed with proper attribution
+
+### Frame Implementation
+
+The app uses a serverless API endpoint to handle Frame requests:
+
+- `/api/frame` - Handles the Frame protocol requests
+- `/api/quote-image` - Generates beautiful quote images dynamically
+
 ## Contributing
 
 Feel free to open issues and pull requests!
@@ -53,11 +72,8 @@ You can also use the `public` directory to serve a static image for `splashBackg
 
 ## Frame Embed
 
-Add a the `fc:frame` in `index.html` to make your root app URL sharable in feeds:
+The app includes Frame metadata in `index.html` to make your root app URL sharable in feeds:
 
 ```html
-  <head>
-    <!--- other tags --->
-    <meta name="fc:frame" content='{"version":"next","imageUrl":"https://placehold.co/900x600.png?text=Frame%20Image","button":{"title":"Open","action":{"type":"launch_frame","name":"App Name","url":"https://app.com"}}}' /> 
-  </head>
+<meta name="fc:frame" content='{"version":"vNext","imageUrl":"https://quote-inspiration.vercel.app/api/frame","buttons":[{"label":"🔄 New Quote","action":"post"},{"label":"➕ Add App","action":"post"},{"label":"📢 Share","action":"post"}],"postUrl":"https://quote-inspiration.vercel.app/api/frame"}' />
 ```
