@@ -109,47 +109,6 @@ async function generateQuoteImage(text, author) {
             props: {
               style: {
                 display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                width: '100%',
-                padding: '16px',
-                fontSize: '16px',
-                fontWeight: 'bold',
-                color: 'white',
-                zIndex: 10,
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                backdropFilter: 'blur(5px)',
-                backgroundColor: 'rgba(0, 0, 0, 0.3)',
-              },
-              children: [
-                {
-                  type: 'span',
-                  props: {
-                    children: 'Quote Inspiration',
-                  },
-                },
-                {
-                  type: 'span',
-                  props: {
-                    style: {
-                      fontSize: '14px',
-                      opacity: 0.9,
-                    },
-                    children: 'by blazee',
-                  },
-                },
-              ],
-            },
-          },
-          {
-            type: 'div',
-            props: {
-              style: {
-                display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',

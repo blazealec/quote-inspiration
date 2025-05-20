@@ -49,7 +49,7 @@ module.exports = async (req, res) => {
           }
         });
       } else if (buttonIndex === 2) {
-        // Add App button - redirect to Warpcast app page with proper action
+        // Add App button - use native Warpcast integration
         return res.status(200).json({
           frames: {
             version: 'vNext',
@@ -61,8 +61,7 @@ module.exports = async (req, res) => {
             ],
             ogImage: imageUrl,
             action: {
-              type: 'warpcast_mini_app',
-              url: 'https://warpcast.com/~/mini-apps?app=quote-inspiration'
+              type: 'add_mini_app'
             }
           }
         });
@@ -80,7 +79,7 @@ module.exports = async (req, res) => {
             ogImage: imageUrl,
             action: {
               type: 'post',
-              text: `"${text}"\n\n- ${author}\n\n✨ Generated with Quote Inspiration by blazee\n\nhttps://quote-inspiration.vercel.app`
+              text: `"${text}"\n\n- ${author}\n\n✨ Generated with Quote Inspiration\n\nhttps://quote-inspiration.vercel.app`
             }
           }
         });
