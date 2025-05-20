@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quote Inspiration - Farcaster Mini App</title>
     <meta name="description" content="A beautiful quote generator mini app for Farcaster that displays inspirational quotes with aesthetic backgrounds." />
+    
+    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Quote Inspiration" />
     <meta property="og:description" content="Get your daily dose of inspiration with beautiful quotes." />
     <meta property="og:image" content="https://quote-inspiration.vercel.app/og-image.svg" />
     
     <!-- Farcaster Frame Metadata -->
     <meta name="fc:frame" content='{"version":"vNext","image":"https://quote-inspiration.vercel.app/api/frame","buttons":[{"label":"🔄 New Quote","action":"post"},{"label":"➕ Add App","action":"post"},{"label":"📢 Share","action":"post"}],"postUrl":"https://quote-inspiration.vercel.app/api/frame"}' />
+    
+    <!-- Mini App Sharing Metadata (for embedding in feeds) -->
+    <meta name="fc:frame:app:share" content='{"version":"next","imageUrl":"https://quote-inspiration.vercel.app/og-image.svg","button":{"title":"Get Inspired","action":{"type":"launch_frame","name":"Quote Inspiration","url":"https://quote-inspiration.vercel.app","splashImageUrl":"https://quote-inspiration.vercel.app/splash.svg","splashBackgroundColor":"#1a1a1a"}}}' />
     
     <!-- Mini app metadata -->
     <meta property="fc:frame:app:developer_fid" content="266458" />
