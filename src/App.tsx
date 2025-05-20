@@ -206,13 +206,13 @@ function App() {
     try {
       setSharing(true);
       
-      // Use the base app URL instead of the mini app URL
+      // Use just the plain base URL
       const baseUrl = "https://quote-inspiration.vercel.app";
       
-      // Share the quote with the base URL as an embed
+      // Share with minimal text and embed the URL
       await sdk.actions.composeCast({
         text: `"${quote.text}" - ${quote.author}\n\n✨ Generated with Quote Inspiration`,
-        embeds: [baseUrl] // Use the base URL as an embed
+        embeds: [baseUrl]
       });
     } catch (error) {
       setError('Failed to share to Farcaster. Please try again.');
