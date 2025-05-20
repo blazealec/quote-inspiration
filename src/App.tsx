@@ -206,16 +206,13 @@ function App() {
     try {
       setSharing(true);
       
-      // Get the base URL (similar to what we use in the API)
+      // Share the app URL instead of a direct image URL
       const baseUrl = window.location.origin;
       
-      // Create the quote image URL (this matches our API endpoint)
-      const imageUrl = `${baseUrl}/api/quote-image?text=${encodeURIComponent(quote.text)}&author=${encodeURIComponent(quote.author)}`;
-      
-      // Share the quote with the image
+      // Share the quote with proper text but no direct image URL
       await sdk.actions.composeCast({
-        text: `"${quote.text}"\n\n- ${quote.author}\n\n✨ Generated with Quote Inspiration`,
-        embeds: [imageUrl]
+        text: `"${quote.text}"\n\n- ${quote.author}\n\n✨ Generated with Quote Inspiration\n\n${baseUrl}`,
+        embeds: [] // Don't include the image URL directly
       });
     } catch (error) {
       setError('Failed to share to Farcaster. Please try again.');
