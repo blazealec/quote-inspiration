@@ -11,14 +11,17 @@
     <meta property="og:description" content="Get your daily dose of inspiration with beautiful quotes." />
     <meta property="og:image" content="https://quote-inspiration.vercel.app/app.svg" />
     
-    <!-- Farcaster Frame Metadata (for both interactive frames and link sharing) -->
-    <meta name="fc:frame" content='{"version":"vNext","image":"https://quote-inspiration.vercel.app/app.svg","buttons":[{"label":"🔄 New Quote","action":"post"},{"label":"➕ Add App","action":"post"},{"label":"📢 Share","action":"post"}],"postUrl":"https://quote-inspiration.vercel.app/api/frame"}' />
+    <!-- Farcaster Frame Metadata (for interactive frames) -->
+    <meta name="fc:frame" content='{"version":"vNext","image":"https://quote-inspiration.vercel.app/api/frame","buttons":[{"label":"🔄 New Quote","action":"post"},{"label":"➕ Add App","action":"post"},{"label":"📢 Share","action":"post"}],"postUrl":"https://quote-inspiration.vercel.app/api/frame"}' />
+    
+    <!-- Farcaster Mini App Embed Metadata (for sharing URL as a mini app) -->
+    <meta name="fc:frame:app:share" content='{"version":"next","imageUrl":"https://quote-inspiration.vercel.app/app.svg","button":{"title":"Get Inspired","action":{"type":"launch_frame","url":"https://warpcast.com/miniapps/DiW2u0T_OXr3/quote-inspiration","name":"Quote Inspiration","splashImageUrl":"https://quote-inspiration.vercel.app/app.svg","splashBackgroundColor":"#1a1a1a"}}}' />
     
     <!-- Mini app metadata -->
     <meta property="fc:frame:app:developer_fid" content="266458" />
     <meta property="fc:frame:app:name" content="Quote Inspiration" />
     <meta property="fc:frame:app:developer_name" content="blazee" />
-    <meta property="fc:frame:app:url" content="https://quote-inspiration.vercel.app" />
+    <meta property="fc:frame:app:url" content="https://warpcast.com/miniapps/DiW2u0T_OXr3/quote-inspiration" />
     
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
