@@ -2,6 +2,10 @@
 
 A beautiful quote generator mini app for Farcaster that displays inspirational quotes with aesthetic backgrounds. Share your favorite quotes directly to Farcaster!
 
+## Try it now!
+
+Use the official Warpcast mini app link: [https://warpcast.com/miniapps/DiW2u0T_OXr3/quote-inspiration](https://warpcast.com/miniapps/DiW2u0T_OXr3/quote-inspiration)
+
 ## Features
 
 - 🎯 Random inspirational quotes from a curated API

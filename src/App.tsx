@@ -206,12 +206,12 @@ function App() {
     try {
       setSharing(true);
       
-      // Share the app URL instead of a direct image URL
-      const baseUrl = window.location.origin;
+      // Use the official Warpcast mini app URL
+      const miniAppUrl = "https://warpcast.com/miniapps/DiW2u0T_OXr3/quote-inspiration";
       
-      // Share the quote with proper text but no direct image URL
+      // Share the quote with the official mini app URL
       await sdk.actions.composeCast({
-        text: `"${quote.text}"\n\n- ${quote.author}\n\n✨ Generated with Quote Inspiration\n\n${baseUrl}`,
+        text: `"${quote.text}"\n\n- ${quote.author}\n\n✨ Generated with Quote Inspiration\n\n${miniAppUrl}`,
         embeds: [] // Don't include the image URL directly
       });
     } catch (error) {
