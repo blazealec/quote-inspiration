@@ -206,14 +206,13 @@ function App() {
     try {
       setSharing(true);
       
-      // Use the official Warpcast mini app URL
-      const miniAppUrl = "https://warpcast.com/miniapps/DiW2u0T_OXr3/quote-inspiration";
+      // Use the base app URL instead of the mini app URL
+      const baseUrl = "https://quote-inspiration.vercel.app";
       
-      // Share the quote with the official mini app URL as the very last line
-      // This ensures Warpcast properly recognizes and embeds the mini app
+      // Share the quote with the base URL as an embed
       await sdk.actions.composeCast({
-        text: `"${quote.text}"\n\n- ${quote.author}\n\n✨ Generated with Quote Inspiration\n${miniAppUrl}`,
-        embeds: [] // Don't include any embeds to ensure the URL is properly recognized
+        text: `"${quote.text}" - ${quote.author}\n\n✨ Generated with Quote Inspiration`,
+        embeds: [baseUrl] // Use the base URL as an embed
       });
     } catch (error) {
       setError('Failed to share to Farcaster. Please try again.');
